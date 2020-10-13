@@ -23,7 +23,7 @@ class MenuItem extends NodeData {
       return null;
     }
 
-    List<MenuItem> datas = null;
+    List<MenuItem> datas;
     if (map["subMenuList"] != null && map["subMenuList"].length > 0) {
       datas = _parseOrgans(map["subMenuList"]);
     }
