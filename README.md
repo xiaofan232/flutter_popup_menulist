@@ -3,6 +3,7 @@
 
 - Highly customizable. It only manages the tree structure of the data, and the UI is designed by yourself.
 
+https://github.com/xiaofan232/flutter_popup_menulist/blob/master/sample1.mp4
 
 ## Getting Started
 
