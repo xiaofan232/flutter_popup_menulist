@@ -7,20 +7,36 @@ import '../flutter_popup_menulist.dart';
 import 'menu.dart';
 
 class MenuListPopupWidget extends StatefulWidget {
+  ///menu list for display
+  ///if not set,cannot display any menu
   final List<MenuItem> menuList;
+  ///tranfer body to scaffold body
   final Widget bodyWidget;
+  ///popup view background color
   final Color color;
+  ///txt color
   final Color txtColor;
+  ///leading background color
   final Color leadingBKColor;
+  ///leading color
   final Color leadingColor;
+  ///title image url
   final String headerImageUrl;
+  ///leading background color init
   final Color initLeadingBKColor;
+  ///leading color init
   final Color initLeadingColor;
+  ///divider side color
   final Color dividerColor;
+  ///appbar background color
   final Color appBarBgColor;
+  ///width of header image
   final double headerImageWidth;
+  ///image ratio of header image
   final double headerImageRatio;
+  ///check whether the second level font weight is bold or not
   final bool isSecondLevelBold;
+  ///fit style of header image
   final BoxFit headerImageFit;
 
   MenuListPopupWidget(

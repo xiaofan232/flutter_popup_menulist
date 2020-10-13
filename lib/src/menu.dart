@@ -4,7 +4,9 @@ class MenuItem extends NodeData {
   int id;
   int parentId;
   String name;
+  /// type key for some situation
   int type;
+  /// type value for some situation
   String typeValue;
   int level;
   List<MenuItem> subMenuList;
@@ -39,7 +41,6 @@ class MenuItem extends NodeData {
     );
 
     menu.addChildrenMenu(menu, datas);
-
     return menu;
   }
 
@@ -47,9 +48,6 @@ class MenuItem extends NodeData {
     if (menus != null && menus.length > 0) {
       menus.forEach((item) {
         menu.addChild(item);
-//        if (item.subMenuList != null && item.subMenuList.length > 0) {
-//          addChildrenMenu(item, item.subMenuList);
-//        }
       });
     }
   }
