@@ -7,42 +7,42 @@ import '../flutter_popup_menulist.dart';
 import 'menu.dart';
 
 class MenuListPopupWidget extends StatefulWidget {
-  List<MenuItem> menuList;
-  Widget bodyWidget;
-  Color color;
-  Color txtColor;
-  Color leadingBKColor;
-  Color leadingColor;
-  String headerImageUrl;
-  String brandNo;
-  Color initLeadingBKColor;
-  Color initLeadingColor;
-  Color dividerColor;
-  Color appBarBgColor;
-  double headerImageWidth;
-  double headerImageRatio;
-  bool isSecondLevelBold;
-  BoxFit headerImageFit;
+  final List<MenuItem> menuList;
+  final Widget bodyWidget;
+  final Color color;
+  final Color txtColor;
+  final Color leadingBKColor;
+  final Color leadingColor;
+  final String headerImageUrl;
+  final String brandNo;
+  final Color initLeadingBKColor;
+  final Color initLeadingColor;
+  final Color dividerColor;
+  final Color appBarBgColor;
+  final double headerImageWidth;
+  final double headerImageRatio;
+  final bool isSecondLevelBold;
+  final BoxFit headerImageFit;
 
   MenuListPopupWidget(
       {Key key,
-        @required this.menuList,
-        @required this.bodyWidget,
-        @required this.brandNo,
-        this.headerImageUrl,
-        this.headerImageWidth,
-        this.headerImageRatio,
-        this.color,
-        this.txtColor,
-        this.leadingBKColor,
-        this.leadingColor,
-        this.initLeadingBKColor,
-        this.initLeadingColor,
-        this.dividerColor,
-        this.appBarBgColor,
-        this.isSecondLevelBold,
-        this.headerImageFit})
-      : super(key: key) {}
+      @required this.menuList,
+      @required this.bodyWidget,
+      @required this.brandNo,
+      this.headerImageUrl,
+      this.headerImageWidth,
+      this.headerImageRatio,
+      this.color,
+      this.txtColor,
+      this.leadingBKColor,
+      this.leadingColor,
+      this.initLeadingBKColor,
+      this.initLeadingColor,
+      this.dividerColor,
+      this.appBarBgColor,
+      this.isSecondLevelBold,
+      this.headerImageFit})
+      : super(key: key);
 
   @override
   MenuListPopupWidgetState createState() => new MenuListPopupWidgetState();
@@ -56,19 +56,18 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
   ScrollController _scrollController = new ScrollController();
   TreeViewController _controller;
   List<MenuItem> menuList = new List<MenuItem>();
-  Map<String, dynamic> responseData = null;
+  Color color = Colors.white;
+  Color txtColor = Colors.black;
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
     double headerImageWidth =
-    widget.headerImageWidth == null ? 150.0 : widget.headerImageWidth;
+        widget.headerImageWidth == null ? 150.0 : widget.headerImageWidth;
     double headerImageRatio =
-    widget.headerImageRatio == null ? 1 : widget.headerImageRatio;
-    Color color = Colors.white;
-    Color txtColor = Colors.black;
+        widget.headerImageRatio == null ? 1 : widget.headerImageRatio;
+
     Color appBarBgColor =
-    widget.appBarBgColor == null ? Colors.white : widget.appBarBgColor;
+        widget.appBarBgColor == null ? Colors.white : widget.appBarBgColor;
     Color leadingColor = widget.initLeadingColor == null
         ? Colors.black
         : widget.initLeadingColor;
@@ -132,13 +131,12 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
         body: Container(
           color: Colors.white,
           child: widget.bodyWidget,
-        )
-    );
+        ));
   }
 
   void createOverLay() {
     Color color =
-    widget.color == null ? Color.fromRGBO(28, 39, 82, 0.95) : widget.color;
+        widget.color == null ? Color.fromRGBO(28, 39, 82, 0.95) : widget.color;
     Color txtColor = widget.txtColor == null
         ? Color.fromRGBO(171, 189, 255, 1)
         : widget.txtColor;
@@ -151,88 +149,89 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
 
     var appbarBottomHeight = 0.0;
     RenderBox appbarBottomRenderBox =
-    _appbottomWidget.currentContext?.findRenderObject();
+        _appbottomWidget.currentContext?.findRenderObject();
     if (appbarBottomRenderBox != null) {
       appbarBottomHeight = appbarBottomRenderBox.size.height;
     }
-
-    ScrollController _scrollController = new ScrollController();
 
     overlayEntry = new OverlayEntry(builder: (context) {
       return new Positioned(
           top: parentPosition.dy + parentSize.height - appbarBottomHeight,
           child: Material(
             child: Container(
-              color: color,
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height -
-                  (parentPosition.dy + parentSize.height - appbarBottomHeight),
-              child: ListTreeView(
-                shrinkWrap: false,
-                padding: EdgeInsets.all(0),
-                itemBuilder: (BuildContext context, NodeData data) {
-                  MenuItem item = data;
-                  double offsetX = item.level * 16.0;
-                  return Container(
-                    height: 54,
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    decoration: BoxDecoration(
-                        color: color,
-                        border: Border(bottom: BorderSide(width: 1, color: Colors.grey))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.only(left: offsetX),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  '${item.name}',
-                                  style: TextStyle(
-                                      fontSize: 15, color: txtColor),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
-                              ],
+                color: color,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height -
+                    (parentPosition.dy +
+                        parentSize.height -
+                        appbarBottomHeight),
+                child: ListTreeView(
+                  shrinkWrap: false,
+                  padding: EdgeInsets.all(0),
+                  itemBuilder: (BuildContext context, NodeData data) {
+                    MenuItem item = data;
+                    double offsetX = item.level * 16.0;
+                    return Container(
+                      height: 54,
+                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      decoration: BoxDecoration(
+                          color: color,
+                          border: Border(
+                              bottom:
+                                  BorderSide(width: 1, color: Colors.grey))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.only(left: offsetX),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    '${item.name}',
+                                    style: TextStyle(
+                                        fontSize: 15, color: txtColor),
+                                  ),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        Visibility(
-                            visible: item.children != null && item.children.length > 0,
-                            child: Container(
-                              child: InkWell(
-                                onTap: () {
-                                  _controller.expandOrCollapse(item.index);
-                                },
-                                child: Icon(
-                                  Icons.arrow_drop_down,
-                                  color: txtColor,
-                                  size: 30,
+                          Visibility(
+                              visible: item.children != null &&
+                                  item.children.length > 0,
+                              child: Container(
+                                child: InkWell(
+                                  onTap: () {
+                                    _controller.expandOrCollapse(item.index);
+                                  },
+                                  child: Icon(
+                                    Icons.arrow_drop_down,
+                                    color: txtColor,
+                                    size: 30,
+                                  ),
                                 ),
-                              ),
-                            ))
-                      ],
-                    ),
-                  );
-                },
-                onTap: (NodeData data) {
-                  MenuItem item = data;
-                  if (data.children == null || data.children.length == 0) {
-                    print(item.name);
-                    print(item.typeValue);
-                  }
-                  print('index = ${data.index}');
-                },
-                onLongPress: (data) {
-                },
-                controller: _controller,
-                toggleNodeOnTap: true,
-              )
-            ),
+                              ))
+                        ],
+                      ),
+                    );
+                  },
+                  onTap: (NodeData data) {
+                    MenuItem item = data;
+                    if (data.children == null || data.children.length == 0) {
+                      print(item.name);
+                      print(item.typeValue);
+                    }
+                    print('index = ${data.index}');
+                  },
+                  onLongPress: (data) {},
+                  controller: _controller,
+                  toggleNodeOnTap: true,
+                )),
           ));
     });
   }
@@ -245,7 +244,7 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
   }
 
   void getMenuList() {
-    if(widget.menuList != null && widget.menuList.length > 0) {
+    if (widget.menuList != null && widget.menuList.length > 0) {
       _controller.treeData(widget.menuList);
     }
   }
