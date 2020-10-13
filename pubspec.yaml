@@ -1,7 +1,6 @@
 name: flutter_popup_menulist
 description: This can display popup menu list by using tree structure. Compatible with Android & iOS.
 version: 0.0.1
-author: Martin <xiaofan232@gmail.com>
 homepage: https://github.com/xiaofan232/flutter_popup_menulist
 
 environment:
