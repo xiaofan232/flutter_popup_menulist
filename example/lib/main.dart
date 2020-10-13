@@ -43,7 +43,8 @@ class _MyAppState extends State<MyApp> {
               ),
               menuList: menuList,
               headerImageUrl: "https://img.alicdn.com/tfs/TB1EGGoLXXXXXcLXpXXXXXXXXXX-123-38.png",
-              headerImageRatio: 3.24)),
+              headerImageRatio: 3.236,
+              headerImageFit: BoxFit.fitHeight,)),
     );
   }
 }
