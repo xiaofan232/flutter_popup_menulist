@@ -243,11 +243,11 @@ class CachedNetworkImageState extends State<CachedNetworkImage>
 
     _fileResponseStream = _cacheManager()
         .getFileStream(
-      widget.imageUrl,
-      headers: widget.httpHeaders,
-      withProgress: widget.progressIndicatorBuilder != null,
-    )
-    // ignore errors if not mounted
+          widget.imageUrl,
+          headers: widget.httpHeaders,
+          withProgress: widget.progressIndicatorBuilder != null,
+        )
+        // ignore errors if not mounted
         .handleError(() {}, test: (_) => !mounted)
         .where((f) {
       if (f is FileInfo) {
@@ -266,9 +266,9 @@ class CachedNetworkImageState extends State<CachedNetworkImage>
 
   void _addImage(
       {FileInfo image,
-        DownloadProgress progress,
-        Object error,
-        Duration duration}) {
+      DownloadProgress progress,
+      Object error,
+      Duration duration}) {
     if (_imageHolders.isNotEmpty) {
       var lastHolder = _imageHolders.last;
       if (lastHolder.progress != null && progress != null) {
@@ -282,7 +282,7 @@ class CachedNetworkImageState extends State<CachedNetworkImage>
             lastHolder.animationController.duration = widget.fadeOutDuration;
           } else {
             lastHolder.animationController.duration =
-            const Duration(seconds: 1);
+                const Duration(seconds: 1);
           }
           if (widget.fadeOutCurve != null) {
             lastHolder.curve = widget.fadeOutCurve;
@@ -408,26 +408,26 @@ class CachedNetworkImageState extends State<CachedNetworkImage>
     return widget.imageBuilder != null
         ? widget.imageBuilder(context, imageProvider)
         : Image(
-      image: imageProvider,
-      fit: widget.fit,
-      width: widget.width,
-      height: widget.height,
-      alignment: widget.alignment,
-      repeat: widget.repeat,
-      color: widget.color,
-      colorBlendMode: widget.colorBlendMode,
-      matchTextDirection: widget.matchTextDirection,
-      filterQuality: widget.filterQuality,
-    );
+            image: imageProvider,
+            fit: widget.fit,
+            width: widget.width,
+            height: widget.height,
+            alignment: widget.alignment,
+            repeat: widget.repeat,
+            color: widget.color,
+            colorBlendMode: widget.colorBlendMode,
+            matchTextDirection: widget.matchTextDirection,
+            filterQuality: widget.filterQuality,
+          );
   }
 
   Widget _placeholder(BuildContext context) {
     return widget.placeholder != null
         ? widget.placeholder(context, widget.imageUrl)
         : SizedBox(
-      width: widget.width,
-      height: widget.height,
-    );
+            width: widget.width,
+            height: widget.height,
+          );
   }
 
   Widget _errorWidget(BuildContext context, Object error) {

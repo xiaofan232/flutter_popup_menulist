@@ -11,12 +11,12 @@ class MenuItem extends NodeData {
 
   MenuItem(
       {this.id,
-        this.parentId,
-        this.name,
-        this.type,
-        this.typeValue,
-        this.level,
-        this.subMenuList});
+      this.parentId,
+      this.name,
+      this.type,
+      this.typeValue,
+      this.level,
+      this.subMenuList});
 
   static MenuItem fromMap(Map map) {
     if (map == null) {

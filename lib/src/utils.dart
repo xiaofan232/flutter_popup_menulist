@@ -13,7 +13,7 @@ Widget buildNetWorkImage(String url,
         ),
       ),
     ),
-    placeholder: (context,url)=>CircularProgressIndicator(),
-    errorWidget: (context, url, error) =>CircularProgressIndicator(),
+    placeholder: (context, url) => CircularProgressIndicator(),
+    errorWidget: (context, url, error) => CircularProgressIndicator(),
   );
 }
