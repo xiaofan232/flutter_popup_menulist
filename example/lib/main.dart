@@ -42,7 +42,6 @@ class _MyAppState extends State<MyApp> {
                 child: Text('test'),
               ),
               menuList: menuList,
-              brandNo: "06105",
               headerImageUrl: "https://img.alicdn.com/tfs/TB1EGGoLXXXXXcLXpXXXXXXXXXX-123-38.png",
               headerImageRatio: 3.24)),
     );

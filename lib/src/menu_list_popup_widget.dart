@@ -14,7 +14,6 @@ class MenuListPopupWidget extends StatefulWidget {
   final Color leadingBKColor;
   final Color leadingColor;
   final String headerImageUrl;
-  final String brandNo;
   final Color initLeadingBKColor;
   final Color initLeadingColor;
   final Color dividerColor;
@@ -28,7 +27,6 @@ class MenuListPopupWidget extends StatefulWidget {
       {Key key,
       @required this.menuList,
       @required this.bodyWidget,
-      @required this.brandNo,
       this.headerImageUrl,
       this.headerImageWidth,
       this.headerImageRatio,
