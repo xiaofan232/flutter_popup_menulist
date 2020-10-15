@@ -6,38 +6,57 @@ import 'package:list_treeview/tree/tree_view.dart';
 import '../flutter_popup_menulist.dart';
 import 'menu.dart';
 
+typedef void MenuItemClick(MenuItem menuItem);
+
 class MenuListPopupWidget extends StatefulWidget {
   ///menu list for display
   ///if not set,cannot display any menu
   final List<MenuItem> menuList;
+
   ///tranfer body to scaffold body
   final Widget bodyWidget;
+
   ///popup view background color
   final Color color;
+
   ///txt color
   final Color txtColor;
+
   ///leading background color
   final Color leadingBKColor;
+
   ///leading color
   final Color leadingColor;
+
   ///title image url
   final String headerImageUrl;
+
   ///leading background color init
   final Color initLeadingBKColor;
+
   ///leading color init
   final Color initLeadingColor;
+
   ///divider side color
   final Color dividerColor;
+
   ///appbar background color
   final Color appBarBgColor;
+
   ///width of header image
   final double headerImageWidth;
+
   ///image ratio of header image
   final double headerImageRatio;
+
   ///check whether the second level font weight is bold or not
   final bool isSecondLevelBold;
+
   ///fit style of header image
   final BoxFit headerImageFit;
+
+  ///menu click event
+  final MenuItemClick menuItemClick;
 
   MenuListPopupWidget(
       {Key key,
@@ -55,7 +74,8 @@ class MenuListPopupWidget extends StatefulWidget {
       this.dividerColor,
       this.appBarBgColor,
       this.isSecondLevelBold,
-      this.headerImageFit})
+      this.headerImageFit,
+      this.menuItemClick})
       : super(key: key);
 
   @override
@@ -236,11 +256,11 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
                   },
                   onTap: (NodeData data) {
                     MenuItem item = data;
-                    if (data.children == null || data.children.length == 0) {
-                      print(item.name);
-                      print(item.typeValue);
+                    print('name = ${item.name}');
+                    print('index = ${item.index}');
+                    if (widget.menuItemClick != null) {
+                      widget.menuItemClick(item);
                     }
-                    print('index = ${data.index}');
                   },
                   onLongPress: (data) {},
                   controller: _controller,

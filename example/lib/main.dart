@@ -38,13 +38,20 @@ class _MyAppState extends State<MyApp> {
             title: const Text(''),
           ),
           body: MenuListPopupWidget(
-              bodyWidget: Center(
-                child: Text('test'),
-              ),
-              menuList: menuList,
-              headerImageUrl: "https://img.alicdn.com/tfs/TB1EGGoLXXXXXcLXpXXXXXXXXXX-123-38.png",
-              headerImageRatio: 3.236,
-              headerImageFit: BoxFit.fitHeight,)),
+            bodyWidget: Center(
+              child: Text('test'),
+            ),
+            menuList: menuList,
+            headerImageUrl:
+                "https://img.alicdn.com/tfs/TB1EGGoLXXXXXcLXpXXXXXXXXXX-123-38.png",
+            headerImageRatio: 3.236,
+            headerImageFit: BoxFit.fitHeight,
+            menuItemClick: (MenuItem item) {
+              if (item.children == null || item.children.length == 0) {
+                print('clicked : ${item.name}');
+              }
+            },
+          )),
     );
   }
 }
