@@ -7,3 +7,6 @@
 ## 0.0.3
 - Support menu click event
 - Fix some code
+
+## 0.0.4
+- Migrate to support null safety
