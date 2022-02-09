@@ -1,5 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'cached_network_image_extend.dart';
 
 /// cached network image
 Widget buildNetWorkImage(String url,

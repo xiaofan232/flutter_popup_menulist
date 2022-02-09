@@ -17,51 +17,51 @@ class MenuListPopupWidget extends StatefulWidget {
   final Widget bodyWidget;
 
   ///popup view background color
-  final Color color;
+  final Color? color;
 
   ///txt color
-  final Color txtColor;
+  final Color? txtColor;
 
   ///leading background color
-  final Color leadingBKColor;
+  final Color? leadingBKColor;
 
   ///leading color
-  final Color leadingColor;
+  final Color? leadingColor;
 
   ///title image url
-  final String headerImageUrl;
+  final String? headerImageUrl;
 
   ///leading background color init
-  final Color initLeadingBKColor;
+  final Color? initLeadingBKColor;
 
   ///leading color init
-  final Color initLeadingColor;
+  final Color? initLeadingColor;
 
   ///divider side color
-  final Color dividerColor;
+  final Color? dividerColor;
 
   ///appbar background color
-  final Color appBarBgColor;
+  final Color? appBarBgColor;
 
   ///width of header image
-  final double headerImageWidth;
+  final double? headerImageWidth;
 
   ///image ratio of header image
-  final double headerImageRatio;
+  final double? headerImageRatio;
 
   ///check whether the second level font weight is bold or not
-  final bool isSecondLevelBold;
+  final bool? isSecondLevelBold;
 
   ///fit style of header image
-  final BoxFit headerImageFit;
+  final BoxFit? headerImageFit;
 
   ///menu click event
-  final MenuItemClick menuItemClick;
+  final MenuItemClick? menuItemClick;
 
   MenuListPopupWidget(
-      {Key key,
-      @required this.menuList,
-      @required this.bodyWidget,
+      {Key? key,
+      required this.menuList,
+      required this.bodyWidget,
       this.headerImageUrl,
       this.headerImageWidth,
       this.headerImageRatio,
@@ -83,44 +83,44 @@ class MenuListPopupWidget extends StatefulWidget {
 }
 
 class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
-  OverlayEntry overlayEntry;
+  OverlayEntry? overlayEntry;
   bool isShow = false;
   GlobalKey _tapWidget = GlobalKey();
   GlobalKey _appbottomWidget = GlobalKey();
   ScrollController _scrollController = new ScrollController();
-  TreeViewController _controller;
-  List<MenuItem> menuList = new List<MenuItem>();
+  late TreeViewController _controller;
+  List<MenuItem> menuList = [];
   Color color = Colors.white;
   Color txtColor = Colors.black;
 
   @override
   Widget build(BuildContext context) {
     double headerImageWidth =
-        widget.headerImageWidth == null ? 150.0 : widget.headerImageWidth;
+        widget.headerImageWidth == null ? 150.0 : widget.headerImageWidth!;
     double headerImageRatio =
-        widget.headerImageRatio == null ? 1 : widget.headerImageRatio;
+        widget.headerImageRatio == null ? 1 : widget.headerImageRatio!;
 
     Color appBarBgColor =
-        widget.appBarBgColor == null ? Colors.white : widget.appBarBgColor;
+        widget.appBarBgColor == null ? Colors.white : widget.appBarBgColor!;
     Color leadingColor = widget.initLeadingColor == null
         ? Colors.black
-        : widget.initLeadingColor;
+        : widget.initLeadingColor!;
     Color leadingBKColor = widget.initLeadingBKColor == null
         ? Colors.white
-        : widget.initLeadingBKColor;
+        : widget.initLeadingBKColor!;
     if (isShow) {
       color = widget.color == null
           ? Color.fromRGBO(28, 39, 82, 0.95)
-          : widget.color;
+          : widget.color!;
       txtColor = widget.txtColor == null
           ? Color.fromRGBO(171, 189, 255, 1)
-          : widget.txtColor;
+          : widget.txtColor!;
       leadingColor = widget.leadingColor == null
           ? Color.fromRGBO(171, 189, 255, 1)
-          : widget.leadingColor;
+          : widget.leadingColor!;
       leadingBKColor = widget.leadingBKColor == null
           ? Color.fromRGBO(28, 39, 82, 0.95)
-          : widget.leadingBKColor;
+          : widget.leadingBKColor!;
     }
 
     return Scaffold(
@@ -130,7 +130,7 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
             width: headerImageWidth,
             child: AspectRatio(
               aspectRatio: headerImageRatio,
-              child: buildNetWorkImage(widget.headerImageUrl,
+              child: buildNetWorkImage(widget.headerImageUrl!,
                   fit: widget.headerImageFit == null
                       ? BoxFit.fitWidth
                       : widget.headerImageFit,
@@ -170,20 +170,21 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
 
   void createOverLay() {
     Color color =
-        widget.color == null ? Color.fromRGBO(28, 39, 82, 0.95) : widget.color;
+        widget.color == null ? Color.fromRGBO(28, 39, 82, 0.95) : widget.color!;
     Color txtColor = widget.txtColor == null
         ? Color.fromRGBO(171, 189, 255, 1)
-        : widget.txtColor;
-    RenderBox renderBox = context.findRenderObject();
-    var screenSize = renderBox.size;
+        : widget.txtColor!;
+    RenderBox? renderBox = context.findRenderObject() as RenderBox?;
+    var screenSize = renderBox!.size;
     print("screenSize:" + screenSize.toString());
-    renderBox = _tapWidget.currentContext.findRenderObject();
-    var parentSize = renderBox.size;
+    renderBox = _tapWidget.currentContext!.findRenderObject() as RenderBox?;
+    var parentSize = renderBox!.size;
     var parentPosition = renderBox.localToGlobal(Offset.zero);
 
     var appbarBottomHeight = 0.0;
-    RenderBox appbarBottomRenderBox =
-        _appbottomWidget.currentContext?.findRenderObject();
+    RenderBox? appbarBottomRenderBox = _appbottomWidget.currentContext == null
+        ? null
+        : _appbottomWidget.currentContext!.findRenderObject() as RenderBox;
     if (appbarBottomRenderBox != null) {
       appbarBottomHeight = appbarBottomRenderBox.size.height;
     }
@@ -203,7 +204,7 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
                   shrinkWrap: false,
                   padding: EdgeInsets.all(0),
                   itemBuilder: (BuildContext context, NodeData data) {
-                    MenuItem item = data;
+                    MenuItem item = data as MenuItem;
                     double offsetX = item.level * 16.0;
                     return Container(
                       height: 54,
@@ -255,11 +256,11 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
                     );
                   },
                   onTap: (NodeData data) {
-                    MenuItem item = data;
+                    MenuItem item = data as MenuItem;
                     print('name = ${item.name}');
                     print('index = ${item.index}');
                     if (widget.menuItemClick != null) {
-                      widget.menuItemClick(item);
+                      widget.menuItemClick!(item);
                     }
                   },
                   onLongPress: (data) {},
@@ -287,20 +288,20 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
     if (overlayEntry != null) {
       setState(() {
         isShow = false;
-        overlayEntry.remove();
+        overlayEntry!.remove();
       });
     }
   }
 
-  void show({bool isShow}) {
+  void show({bool isShow = false}) {
     if (isShow) {
       if (overlayEntry == null) {
         createOverLay();
       }
-      Overlay.of(context).insert(overlayEntry);
+      Overlay.of(context)!.insert(overlayEntry!);
     } else {
       if (overlayEntry != null) {
-        overlayEntry.remove();
+        overlayEntry!.remove();
       }
     }
   }
@@ -308,7 +309,7 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
   @override
   void dispose() {
     if (overlayEntry != null) {
-      overlayEntry.remove();
+      overlayEntry!.remove();
     }
     overlayEntry = null;
     super.dispose();

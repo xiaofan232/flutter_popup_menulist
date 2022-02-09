@@ -11,7 +11,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<MenuItem> menuList = new List<MenuItem>();
+  List<MenuItem> menuList = [];
 
   @override
   void initState() {
@@ -21,10 +21,10 @@ class _MyAppState extends State<MyApp> {
 
   void getMenuList() {
     String menuListJson =
-        "[{\"id\":8,\"parentId\":0,\"name\":\"测试1\",\"type\":0,\"typeValue\":\"brand-new\",\"subMenuList\":null,\"level\":1},{\"id\":12,\"parentId\":0,\"name\":\"测试2\",\"type\":2,\"typeValue\":\"3\",\"subMenuList\":null,\"level\":1},{\"id\":4,\"parentId\":0,\"name\":\"测试3\",\"type\":0,\"typeValue\":\"hfmszs\",\"subMenuList\":[{\"id\":13,\"parentId\":4,\"name\":\"测试31\",\"type\":0,\"typeValue\":\"hfqxcp\",\"subMenuList\":null,\"level\":2},{\"id\":19,\"parentId\":4,\"name\":\"测试32\",\"type\":null,\"typeValue\":null,\"subMenuList\":[{\"id\":35,\"parentId\":19,\"name\":\"测试321\",\"type\":0,\"typeValue\":\"xzqjtl\",\"subMenuList\":null,\"level\":3},{\"id\":36,\"parentId\":19,\"name\":\"测试322\",\"type\":0,\"typeValue\":\"jhs\",\"subMenuList\":null,\"level\":3},{\"id\":37,\"parentId\":19,\"name\":\"测试323\",\"type\":0,\"typeValue\":\"xhjh\",\"subMenuList\":null,\"level\":3}],\"level\":2}],\"level\":1}]";
+        "[{\"id\":8,\"parentId\":0,\"name\":\"Test1\",\"type\":0,\"typeValue\":\"brand-new\",\"subMenuList\":null,\"level\":1},{\"id\":12,\"parentId\":0,\"name\":\"Test2\",\"type\":2,\"typeValue\":\"3\",\"subMenuList\":null,\"level\":1},{\"id\":4,\"parentId\":0,\"name\":\"Test3\",\"type\":0,\"typeValue\":\"hfmszs\",\"subMenuList\":[{\"id\":13,\"parentId\":4,\"name\":\"Test31\",\"type\":0,\"typeValue\":\"hfqxcp\",\"subMenuList\":null,\"level\":2},{\"id\":19,\"parentId\":4,\"name\":\"Test32\",\"type\":null,\"typeValue\":null,\"subMenuList\":[{\"id\":35,\"parentId\":19,\"name\":\"Test321\",\"type\":0,\"typeValue\":\"xzqjtl\",\"subMenuList\":null,\"level\":3},{\"id\":36,\"parentId\":19,\"name\":\"Test322\",\"type\":0,\"typeValue\":\"jhs\",\"subMenuList\":null,\"level\":3},{\"id\":37,\"parentId\":19,\"name\":\"Test323\",\"type\":0,\"typeValue\":\"xhjh\",\"subMenuList\":null,\"level\":3}],\"level\":2}],\"level\":1}]";
     List array = json.decode(menuListJson);
     array.forEach((item) {
-      MenuItem menu = MenuItem.fromMap(item);
+      MenuItem menu = MenuItem.fromJson(item);
       print(menu.typeValue);
       menuList.add(menu);
     });
