@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:list_treeview/tree/controller/tree_controller.dart';
 import 'package:list_treeview/tree/node/tree_node.dart';
 import 'package:list_treeview/tree/tree_view.dart';
-
 import '../flutter_popup_menulist.dart';
-import 'menu.dart';
 
 typedef void MenuItemClick(MenuItem menuItem);
 
@@ -237,7 +235,7 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
                             ),
                           ),
                           Visibility(
-                              visible: item.children != null &&
+                              visible:
                                   item.children.length > 0,
                               child: Container(
                                 child: InkWell(
@@ -279,7 +277,7 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
   }
 
   void getMenuList() {
-    if (widget.menuList != null && widget.menuList.length > 0) {
+    if (widget.menuList.length > 0) {
       _controller.treeData(widget.menuList);
     }
   }
@@ -298,7 +296,7 @@ class MenuListPopupWidgetState extends State<MenuListPopupWidget> {
       if (overlayEntry == null) {
         createOverLay();
       }
-      Overlay.of(context)!.insert(overlayEntry!);
+      Overlay.of(context).insert(overlayEntry!);
     } else {
       if (overlayEntry != null) {
         overlayEntry!.remove();

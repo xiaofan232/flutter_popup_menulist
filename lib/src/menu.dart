@@ -67,7 +67,7 @@ class MenuItem extends NodeData {
 // }
 //
 void addChildrenMenu(MenuItem menu, List<MenuItem> menus) {
-  if (menus != null && menus.length > 0) {
+  if (menus.length > 0) {
     menus.forEach((item) {
       menu.addChild(item);
     });
