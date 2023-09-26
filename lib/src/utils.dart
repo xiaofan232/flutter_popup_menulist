@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 /// cached network image
 Widget buildNetWorkImage(String url,
-    {fit: BoxFit.cover, defaultImageAssetPath = ""}) {
+    {fit= BoxFit.cover, defaultImageAssetPath = ""}) {
   return CachedNetworkImage(
     imageUrl: url,
     imageBuilder: (context, imageProvider) => Container(
